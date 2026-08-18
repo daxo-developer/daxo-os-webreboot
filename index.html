@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- === Основные метатеги === -->
+    <title>Daxo OS — Bare‑Metal x86_64 Microkernel</title>
+    <meta name="description" content="Daxo OS is an independent, bare‑metal x86_64 microkernel operating system built from scratch in Rust and Assembly. Features 4‑level paging, cooperative multitasking, PIO ATA driver, and a custom FAT‑like filesystem. Tested on real hardware (Acer laptop)." />
+    <meta name="keywords" content="Daxo OS, microkernel, x86_64, operating system, Rust, Assembly, bare metal, multitasking, ATA driver, FAT, OS development, real hardware" />
+    <meta name="author" content="Danil Maloman (Daxo)" />
+    <link rel="canonical" href="https://daxo-developer.github.io/daxo-os-webreboot/" />
+
+    <!-- === Open Graph / Facebook === -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Daxo OS — Bare‑Metal x86_64 Microkernel" />
+    <meta property="og:description" content="An independent, from‑scratch microkernel OS running on real hardware. Memory isolation, async executor, PIO ATA, and FAT‑like FS." />
+    <meta property="og:url" content="https://daxo-developer.github.io/daxo-os-webreboot/" />
+    <meta property="og:image" content="https://daxo-developer.github.io/daxo-os-webreboot/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- === Twitter Cards === -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Daxo OS — Bare‑Metal x86_64 Microkernel" />
+    <meta name="twitter:description" content="A hobby OS with 4‑level paging, async multitasking, ATA driver, and FAT‑like FS – running on real hardware." />
+    <meta name="twitter:image" content="https://daxo-developer.github.io/daxo-os-webreboot/assets/og-image.png" />
+    <meta name="twitter:site" content="@DaxoOSDev" />
+
+    <!-- === Favicon === -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <!-- === Шрифты === -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- === Стили === -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- === Структурированные данные (JSON‑LD) – SoftwareApplication === -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Daxo OS",
+        "version": "0.3.0",
+        "description": "An independent x86_64 microkernel operating system built from scratch. Features 4‑level paging memory isolation, cooperative multitasking with a custom async executor, low‑level PIO ATA driver, and a custom FAT‑like filesystem.",
+        "operatingSystem": "x86_64 bare metal",
+        "applicationCategory": "OperatingSystem",
+        "author": {
+            "@type": "Person",
+            "name": "Danil Maloman (Daxo)",
+            "url": "https://daxo-developer.github.io/"
+        },
+        "url": "https://daxo-developer.github.io/daxo-os-webreboot/",
+        "codeRepository": "https://github.com/daxo-developer/daxo_os",
+        "license": "https://github.com/daxo-developer/daxo_os/blob/main/LICENSE",
+        "datePublished": "2026-06-01",
+        "dateModified": "2026-08-18",
+        "keywords": "microkernel, x86_64, Rust, Assembly, OS development, multitasking, ATA, FAT, bare metal",
+        "testedOnHardware": "Acer laptop (real x86_64 machine)"
+    }
+    </script>
+
+    <!-- === Структурированные данные – VideoObject (доказательство bare-metal) === -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Daxo OS booting on real Acer laptop",
+        "description": "Demonstration of Daxo OS booting directly on physical x86_64 hardware (Acer laptop) without any emulation or virtual machine.",
+        "thumbnailUrl": "https://daxo-developer.github.io/daxo-os-webreboot/assets/og-image.png",
+        "uploadDate": "2026-08-18",
+        "contentUrl": "https://daxo-developer.github.io/daxo-os-webreboot/boot-vertical.mp4",
+        "embedUrl": "https://daxo-developer.github.io/daxo-os-webreboot/",
+        "duration": "PT40S",
+        "interactionStatistic": {
+            "@type": "InteractionCounter",
+            "interactionType": "https://schema.org/WatchAction"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Danil Maloman (Daxo)"
+        },
+        "videoQuality": "HD",
+        "isFamilyFriendly": true,
+        "regionsAllowed": "ALL"
+    }
+    </script>
+
+    <!-- === FAQPage (для богатых сниппетов) === -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is Daxo OS a microkernel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Daxo OS is a microkernel – it runs core services like memory management and task scheduling in kernel space, while drivers and filesystems are isolated."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does it run on real hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Daxo OS boots and runs on physical x86_64 machines (tested on Acer laptops) – no emulator required. See the video proof above."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What languages is it written in?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The kernel is written in Rust with inline Assembly (x86_64). Build tools include GNU Make and linker scripts."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="terminal-window">
+            <pre class="ascii-logo">
+     ######      ###    ##     ##  #######     #######   ######  
+     ##   ##    ## ##    ##   ##  ##     ##   ##     ## ##    ## 
+     ##    ##  ##   ##    ## ##   ##     ##   ##     ## ##       
+     ##    ## ##     ##    ###    ##     ##   ##     ##  ######  
+     ##    ## #########   ## ##   ##     ##   ##     ##       ## 
+     ##   ##  ##     ##  ##   ##  ##     ##   ##     ## ##    ## 
+     ######   ##     ## ##     ##  #######     #######   ######  
+            </pre>
+
+            <div class="tagline">
+                <span class="prompt">$</span>
+                <span class="cmd">uname -s -r</span>
+                <span class="output">Daxo OS 0.3.0 — x86_64</span>
+            </div>
+
+            <p class="slogan">
+                An independent x86_64 microkernel operating system built from scratch.<br />
+                <span class="highlight">Running live on bare metal.</span>
+            </p>
+
+            <div class="cta-group">
+                <a href="#demo" class="cta-btn primary">▶ Watch Bare‑Metal Boot</a>
+                <a href="https://github.com/daxo-developer/daxo_os" target="_blank" class="cta-btn secondary">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DEMO (TWO VIDEOS) ===== -->
+    <section id="demo">
+        <div class="container">
+            <h2>### Real Hardware Execution</h2>
+            <div class="video-grid">
+                <div class="video-item">
+                    <video controls autoplay muted loop playsinline>
+                        <source src="boot-vertical.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">⬆ Booting Daxo OS on Acer laptop</p>
+                </div>
+                <div class="video-item">
+                    <video controls autoplay muted loop playsinline>
+                        <source src="boot-horizontal.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">➡ Multitasking &amp; shell demo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features">
+        <div class="container">
+            <h2>### Core Architecture &amp; Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Memory Management</h3>
+                    <p>4‑level paging memory isolation mapped successfully at high canonical addresses.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Multitasking</h3>
+                    <p>Cooperative multitasking powered by a custom asynchronous task executor.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Storage &amp; Drivers</h3>
+                    <p>Low‑level PIO ATA driver implementation and a custom FAT‑like filesystem parsing sectors directly from LBA 0.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Bare‑Metal Compatibility</h3>
+                    <p>Tested and verified on physical x86_64 hardware architectures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section id="tech-stack">
+        <div class="container">
+            <h2>### Tech Stack</h2>
+            <div class="badge-row">
+                <span class="badge">Rust</span>
+                <span class="badge">Assembly (x86_64)</span>
+                <span class="badge">QEMU / BIOS</span>
+                <span class="badge">GNU Make / Linker Scripts</span>
+                <span class="badge">Rufus (DD Mode)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p class="copyright">
+                © 2026 Danil Maloman (Daxo). Open‑source project.
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/daxo-developer" target="_blank">GitHub</a>
+                <a href="https://x.com/DaxoOSDev" target="_blank">Twitter</a>
+                <a href="https://daxo-os.hashnode.dev" target="_blank">Hashnode</a>
+                <a href="https://www.reddit.com/user/Weak_Brick_1779/" target="_blank">Reddit</a>
+                <a href="https://www.microkernel.info/" target="_blank">microkernel.info</a>
+                <a href="https://t.me/+8xYP8v5MezljNmZi" target="_blank">Telegram (dev)</a>
+                <a href="https://t.me/+yvHbY2BbXuUzMzgy" target="_blank">Telegram (community)</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

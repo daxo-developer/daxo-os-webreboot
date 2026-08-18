@@ -1,0 +1,22 @@
+/* TEAM */
+Developer: Danil Maloman (Daxo)
+Contact: https://daxo-developer.github.io/
+GitHub: https://github.com/daxo-developer
+
+/* TECHNOLOGY */
+Programming languages: Rust, Assembly (x86_64)
+Build system: GNU Make, linker scripts
+Bootloader: BIOS (QEMU / real hardware)
+Testing: Physical Acer laptop (x86_64) – booted from USB via Rufus (DD mode)
+OS architecture: Microkernel
+Memory model: 4-level paging with high canonical addresses
+Scheduling: Cooperative multitasking with custom async executor
+Storage: PIO ATA driver, custom FAT-like filesystem
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript (ES6)
+Font: JetBrains Mono
+Hosting: GitHub Pages
+
+/* STATEMENT */
+Daxo OS runs entirely on bare metal (no emulation). All features have been verified on real x86_64 hardware.
