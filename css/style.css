@@ -1,0 +1,280 @@
+/* ----- Reset & Base ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d1117;
+    color: #e6edf3;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    line-height: 1.6;
+    padding: 2rem 1.5rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ----- Terminal Window (Hero) ----- */
+.terminal-window {
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(2px);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+    max-width: 1000px;
+    margin: 0 auto;
+    transition: border-color 0.3s ease;
+}
+.terminal-window:hover {
+    border-color: #d29922;
+}
+
+.ascii-logo {
+    color: #d29922;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    white-space: pre;
+    overflow-x: auto;
+    text-shadow: 0 0 6px rgba(210, 153, 34, 0.15);
+}
+
+.tagline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.75rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.prompt {
+    color: #58a6ff;
+    font-weight: 700;
+}
+.cmd {
+    color: #f0e6d0;
+}
+.output {
+    color: #7ee787;
+}
+
+.slogan {
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 1.5rem 0 2rem 0;
+    color: #c9d1d9;
+}
+.slogan .highlight {
+    color: #d29922;
+    font-weight: 700;
+}
+
+.cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.cta-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+.cta-btn.primary {
+    background: #d29922;
+    color: #0d1117;
+    border-color: #d29922;
+}
+.cta-btn.primary:hover {
+    background: #e3b341;
+    border-color: #e3b341;
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(210, 153, 34, 0.25);
+}
+.cta-btn.secondary {
+    background: transparent;
+    color: #e6edf3;
+    border-color: #30363d;
+}
+.cta-btn.secondary:hover {
+    background: #21262d;
+    border-color: #8b949e;
+}
+
+/* ----- Section Headers ----- */
+section h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #d29922;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+section h2::before {
+    content: '$ ';
+    color: #58a6ff;
+    font-weight: 700;
+}
+
+/* ----- VIDEO GRID (two videos side by side) ----- */
+#demo {
+    padding: 4rem 0;
+}
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.video-item {
+    background: #161b22;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+    transition: border-color 0.3s, transform 0.2s;
+}
+.video-item:hover {
+    border-color: #d29922;
+    transform: scale(1.01);
+}
+.video-item video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    background: #0d1117;
+}
+.video-caption {
+    text-align: center;
+    padding: 0.8rem 0.5rem;
+    color: #8b949e;
+    font-size: 0.95rem;
+    background: rgba(13, 17, 23, 0.6);
+    border-top: 1px solid #21262d;
+}
+
+/* ----- Feature Cards ----- */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+.feature-card {
+    background: rgba(22, 27, 34, 0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(48, 54, 61, 0.6);
+    border-radius: 16px;
+    padding: 1.8rem 1.5rem;
+    transition: all 0.25s ease;
+}
+.feature-card:hover {
+    border-color: #d29922;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.6);
+}
+.feature-card h3 {
+    color: #d29922;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+.feature-card p {
+    color: #c9d1d9;
+    font-size: 0.95rem;
+}
+
+/* ----- Tech Stack ----- */
+#tech-stack {
+    padding: 3rem 0 2rem 0;
+}
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem 1.2rem;
+}
+.badge {
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #e6edf3;
+    letter-spacing: 0.3px;
+    transition: border-color 0.2s;
+}
+.badge:hover {
+    border-color: #d29922;
+}
+
+/* ----- Footer ----- */
+footer {
+    margin-top: 4rem;
+    padding: 2.5rem 0 1.5rem 0;
+    border-top: 1px solid #21262d;
+    text-align: center;
+}
+.copyright {
+    color: #8b949e;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem 2rem;
+}
+.footer-links a {
+    color: #58a6ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+.footer-links a:hover {
+    color: #d29922;
+    text-decoration: underline;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    body {
+        padding: 1rem;
+    }
+    .terminal-window {
+        padding: 1.5rem 1rem;
+    }
+    .ascii-logo {
+        font-size: 0.55rem;
+    }
+    .slogan {
+        font-size: 1rem;
+    }
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
